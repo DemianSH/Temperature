@@ -3,6 +3,8 @@ package temperature;
 import org.junit.Before;
 import org.junit.Test;
 import search.BinarySearch;
+import search.KindOfSearch;
+import sort.KindOfSort;
 import sort.QuickSort;
 
 import java.util.Map;
@@ -19,7 +21,7 @@ public class TemperatureServiceTest {
 
     @Before
     public void setup() {
-        service = new TemperatureServiceImpl(new QuickSort(), new BinarySearch());
+        service = new TemperatureServiceImpl(KindOfSort.QUICK_SORT, KindOfSearch.BINARY_SEARCH);
         unsortedArrayTest = new double[]{-3.5, 3.5, 4, 6.5, -7.2, -6.2, -12, -10, -9.6};
         emptyArrayTest = new double[]{};
         unavailableRangeArrayTest = new double[]{-3.5, 3.5, 4, 6.5, -7.2, -6.2, -12, -10, -9.6, 10000.0};

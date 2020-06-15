@@ -7,15 +7,14 @@ import sort.KindOfSort;
 import sort.QuickSort;
 import sort.Sort;
 
-public class TemperatureServiceFactory {
+public abstract class TemperatureServiceFactory implements TemperatureService{
 
-    private Sort sort;
-    private Search search;
+    protected Sort sort;
+    protected Search search;
 
-    public TemperatureService getService(KindOfSort kindOfSort, KindOfSearch kindOfSearch) {
+    public TemperatureServiceFactory(KindOfSort kindOfSort, KindOfSearch kindOfSearch) {
         this.sort = defineSort(kindOfSort);
         this.search = defineSearch(kindOfSearch);
-        return new TemperatureServiceImpl(sort, search);
     }
 
     private Sort defineSort(KindOfSort kindOfSort) {

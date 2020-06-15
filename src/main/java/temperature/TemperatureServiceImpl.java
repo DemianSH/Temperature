@@ -1,23 +1,21 @@
 package temperature;
 
+import search.KindOfSearch;
 import search.Search;
+import sort.KindOfSort;
 import sort.Sort;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TemperatureServiceImpl implements TemperatureService {
-
-    private Sort sort;
-    private Search search;
+public class TemperatureServiceImpl extends TemperatureServiceFactory {
 
     private static final double MIN_TEMP = -273;
     private static final double MAX_TEMP = 5526;
 
-    public TemperatureServiceImpl(Sort sort, Search search) {
-        this.sort = sort;
-        this.search = search;
+    public TemperatureServiceImpl(KindOfSort kindOfSort, KindOfSearch kindOfSearch) {
+        super(kindOfSort,kindOfSearch);
     }
 
     public Map<String, Double> findCloserToZero(double[] array) {

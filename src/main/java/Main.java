@@ -1,5 +1,6 @@
 import temperature.TemperatureService;
 import temperature.TemperatureServiceFactory;
+import temperature.TemperatureServiceImpl;
 
 import java.util.Map;
 
@@ -16,8 +17,7 @@ public class Main {
         }
         System.out.println("}");
 
-        TemperatureServiceFactory factory = new TemperatureServiceFactory();
-        TemperatureService service = factory.getService(QUICK_SORT, BINARY_SEARCH);
+        TemperatureService service = new TemperatureServiceImpl(QUICK_SORT, BINARY_SEARCH);
 
         Map<String, Double> result = service.findCloserToZero(array);
         if(result.containsKey("ERROR")) {
