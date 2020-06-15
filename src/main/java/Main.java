@@ -1,6 +1,8 @@
 import temperature.TemperatureService;
 import temperature.TemperatureServiceFactory;
 
+import java.util.Map;
+
 import static search.KindOfSearch.BINARY_SEARCH;
 import static sort.KindOfSort.QUICK_SORT;
 
@@ -16,7 +18,13 @@ public class Main {
 
         TemperatureServiceFactory factory = new TemperatureServiceFactory();
         TemperatureService service = factory.getService(QUICK_SORT, BINARY_SEARCH);
-        double closestElement = service.findCloserToZero(array);
-        System.out.println(closestElement);
+
+        Map<String, Double> result = service.findCloserToZero(array);
+        if(result.containsKey("ERROR")) {
+            System.out.println("ERROR: Something went wrong, please check input date");
+        } else {
+            double closestElement = result.get("RESULT");
+            System.out.println("The closest temperature to zero is : " + closestElement);
+        }
     }
 }
