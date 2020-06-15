@@ -1,6 +1,8 @@
 package temperature;
 
+import java.util.Map;
+
 public interface TemperatureService {
 
-    double findCloserToZero(double[] array);
+    Map<String, Double> findCloserToZero(double[] array);
 }

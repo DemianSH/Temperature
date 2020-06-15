@@ -20,9 +20,10 @@ public class BinarySearch implements Search {
         int middle = (begin + end) / 2;
 
         if (comparingDouble(key, array[middle]) == 1) {
-            return moveToLeft(array, key, middle, begin);
-        } else {
             return moveToRight(array, key, middle, end);
+        } else {
+            return moveToLeft(array, key, middle, begin);
+
         }
     }
 

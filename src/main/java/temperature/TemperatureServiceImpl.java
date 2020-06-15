@@ -4,6 +4,8 @@ import search.Search;
 import sort.Sort;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TemperatureServiceImpl implements TemperatureService {
 
@@ -18,17 +20,21 @@ public class TemperatureServiceImpl implements TemperatureService {
         this.search = search;
     }
 
-    public double findCloserToZero(double[] array) {
+    public Map<String, Double> findCloserToZero(double[] array) {
+        Map<String, Double> result = new HashMap<>();
         if (isEmpty(array)) {
             System.out.println("The input data array of temperatures is empty!");
-            return 0.00;
+            result.put("ERROR", 0.00);
+            return result;
         }
         sort.sort(array);
         if (isAllowableRangeOfTemp(array)) {
             System.out.println("Not allowable range of temperature");
-            return 0.00;
+            result.put("ERROR", 0.00);
+            return result;
         }
-        return search.findCloserToZero(array);
+        result.put("RESULT", search.findCloserToZero(array));
+        return result;
     }
 
     private boolean isAllowableRangeOfTemp(double[] array) {
